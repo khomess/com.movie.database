@@ -23,19 +23,19 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public WriterDTO createWriter(WriterDTO writerDTO) {
+    public WriterDTO createStar(WriterDTO writerDTO) {
         Writer writer = writerRepository.save(modelMapper.map(writerDTO, Writer.class));
         return modelMapper.map(writer, WriterDTO.class);
     }
 
     @Override
-    public WriterDTO getWriterById(String id) {
+    public WriterDTO getStarById(String id) {
         Writer writer = writerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id));
         return modelMapper.map(writer, WriterDTO.class);
     }
 
     @Override
-    public List<WriterDTO> getAllWriters() {
+    public List<WriterDTO> getAllStars() {
         List<Writer> writers = writerRepository.findAll();
         return writers
                 .stream()
@@ -44,7 +44,7 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public WriterDTO updateWriter(WriterDTO writerDTO, String id) {
+    public WriterDTO updateStar(WriterDTO writerDTO, String id) {
         Writer writer = writerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id));
 
         writer.setId(id);
@@ -58,7 +58,7 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public void deleteWriter(String id) {
+    public void deleteStar(String id) {
         writerRepository.delete(writerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id)));
     }
 }

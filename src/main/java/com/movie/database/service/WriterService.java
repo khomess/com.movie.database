@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface WriterService {
 
-    WriterDTO createWriter(WriterDTO writerDTO);
+    WriterDTO createStar(WriterDTO writerDTO);
 
-    WriterDTO getWriterById(String id);
+    WriterDTO getStarById(String id);
 
-    List<WriterDTO> getAllWriters();
+    List<WriterDTO> getAllStars();
 
-    WriterDTO updateWriter(WriterDTO writerDTO, String id);
+    WriterDTO updateStar(WriterDTO writerDTO, String id);
 
-    void deleteWriter(String id);
+    void deleteStar(String id);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.nio.file.AccessDeniedException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest) {
+        return buildExceptionBody(exception, webRequest, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MovieAPIException.class)
+    public ResponseEntity<ErrorDetails> handleMovieAPIException(MovieAPIException exception,
+                                                                WebRequest webRequest) {
         return buildExceptionBody(exception, webRequest, HttpStatus.BAD_REQUEST);
     }
 
@@ -43,6 +50,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             errors.put(fieldName, message);
         });
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorDetails> handleAccessDeniedException(AccessDeniedException exception, WebRequest webRequest) {
+        return buildExceptionBody(exception, webRequest, HttpStatus.UNAUTHORIZED);
     }
 
     private ResponseEntity<ErrorDetails> buildExceptionBody(Exception exception,

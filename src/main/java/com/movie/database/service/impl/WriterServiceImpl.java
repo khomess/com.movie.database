@@ -6,6 +6,7 @@ import com.movie.database.entity.Writer;
 import com.movie.database.repository.WriterRepository;
 import com.movie.database.service.WriterService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,19 +24,19 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public WriterDTO createStar(WriterDTO writerDTO) {
+    public WriterDTO createWriter(WriterDTO writerDTO) {
         Writer writer = writerRepository.save(modelMapper.map(writerDTO, Writer.class));
         return modelMapper.map(writer, WriterDTO.class);
     }
 
     @Override
-    public WriterDTO getStarById(String id) {
+    public WriterDTO getWriterById(String id) {
         Writer writer = writerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id));
         return modelMapper.map(writer, WriterDTO.class);
     }
 
     @Override
-    public List<WriterDTO> getAllStars() {
+    public List<WriterDTO> getAllWriters() {
         List<Writer> writers = writerRepository.findAll();
         return writers
                 .stream()
@@ -44,7 +45,7 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public WriterDTO updateStar(WriterDTO writerDTO, String id) {
+    public WriterDTO updateWriter(WriterDTO writerDTO, String id) {
         Writer writer = writerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id));
 
         writer.setId(id);
@@ -58,7 +59,7 @@ public class WriterServiceImpl implements WriterService {
     }
 
     @Override
-    public void deleteStar(String id) {
+    public void deleteWriter(String id) {
         writerRepository.delete(writerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id)));
     }
 }

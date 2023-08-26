@@ -36,7 +36,7 @@ public class WriterController {
         return ResponseEntity.ok(writerService.getWriterById(id));
     }
 
-    @Operation(description = "Retrieve all Writer")
+    @Operation(description = "Retrieve all Writers")
     @GetMapping
     public ResponseEntity<List<WriterDTO>> getAllWriters() {
         return ResponseEntity.ok(writerService.getAllWriters());

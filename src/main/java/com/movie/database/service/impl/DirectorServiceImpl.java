@@ -2,13 +2,10 @@ package com.movie.database.service.impl;
 
 import com.movie.database.configuration.exception.ResourceNotFoundException;
 import com.movie.database.dto.DirectorDTO;
-import com.movie.database.dto.WriterDTO;
 import com.movie.database.entity.Director;
-import com.movie.database.entity.Writer;
 import com.movie.database.repository.DirectorRepository;
 import com.movie.database.service.DirectorService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

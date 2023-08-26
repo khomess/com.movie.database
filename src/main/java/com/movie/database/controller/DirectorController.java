@@ -1,7 +1,6 @@
 package com.movie.database.controller;
 
 import com.movie.database.dto.DirectorDTO;
-import com.movie.database.dto.WriterDTO;
 import com.movie.database.service.DirectorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,7 +36,7 @@ public class DirectorController {
         return ResponseEntity.ok(directorService.getDirectorById(id));
     }
 
-    @Operation(description = "Retrieve all Director")
+    @Operation(description = "Retrieve all Directors")
     @GetMapping
     public ResponseEntity<List<DirectorDTO>> getAllDirectors() {
         return ResponseEntity.ok(directorService.getAllDirectors());

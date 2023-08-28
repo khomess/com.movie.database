@@ -61,6 +61,6 @@ public class ProducerServiceImpl implements ProducerService {
 
     @Override
     public void deleteProducer(String id) {
-        producerRepository.delete(producerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Actor", "id", id)));
+        producerRepository.delete(producerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Producer", "id", id)));
     }
 }
